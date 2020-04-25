@@ -1,0 +1,15 @@
+<Context>
+    <!-- Specify a JDBC datasource -->
+    <Resource name="jdbc/periodical"
+             auth="Container"
+             type="javax.sql.DataSource"
+             username="root"
+             password="root"
+             driverClassName="com.mysql.jdbc.Driver"
+             url="jdbc:mysql://localhost:3306/periodical?autoReconnect=true"
+             connectionProperties="useUnicode=yes;characterEncoding=utf8;serverTimezone=UTC;"
+             validationQuery="select 1"
+             maxActive="10"
+             maxIdle="4"/>
+ 
+</Context>
