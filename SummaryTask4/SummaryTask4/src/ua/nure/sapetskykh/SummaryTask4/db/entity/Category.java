@@ -5,7 +5,7 @@ package ua.nure.sapetskykh.SummaryTask4.db.entity;
  *
  */
 public class Category extends Entity {
-		/**
+	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -8547811272634737001L;

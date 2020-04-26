@@ -3,10 +3,6 @@ package ua.nure.sapetskykh.SummaryTask4.password;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-/**
- *
- *
- */
 
 public final class Password {
     private static final char[] HEX_DIGITS = { '0', '1', '2', '3', '4', '5',

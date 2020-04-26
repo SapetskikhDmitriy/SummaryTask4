@@ -89,7 +89,6 @@ public final class DBManager {
     private static final String SQL_UNLOCK_USER_BY_ID = "UPDATE users SET user_lock_id = 2 WHERE id = ?";
     private static final String SQL_FIND_USER_BY_ID = "SELECT * FROM users WHERE id = ?";
     private static final String SQL_FIND_USER_BY_SEARCH = "SELECT * FROM users WHERE login LIKE ?";
-    private static final String SQL_FIND_USERS_ID = "SELECT DISTINCT o.users_id  FROM orders o, orders_editions oe, editions e WHERE o.id = oe.orders_id AND oe.editions_id = e.id AND  e.id  IN (SELECT e.id FROM editions e WHERE e.price < 40)";
 
     /**
      * Returns a DB connection from the Pool Connections. 
@@ -491,7 +490,7 @@ public final class DBManager {
     }
 
     /**
-     * Insert edition.
+     * Insert user.
      *
      * @param user User entities.
      * @return boolean.
@@ -1139,26 +1138,6 @@ public final class DBManager {
         return flag;
     }
 
-    public List<Integer> findUsersIdById() throws DBException {
-        List <Integer> usersId = new ArrayList <>();
-        Statement stmt = null;
-        ResultSet rs = null;
-        Connection con = null;
-        try {
-            con = getConnection();
-            stmt = con.createStatement();
-            rs = stmt.executeQuery(SQL_FIND_USERS_ID);
-            while (rs.next()) {
-                usersId.add(rs.getInt(Fields.ORDER_USER_ID));
-            }
-        } catch (SQLException ex) {
-            LOG.error(Messages.ERR_CANNOT_FIND_USERS_ID, ex);
-            throw new DBException(Messages.ERR_CANNOT_FIND_USERS_ID, ex);
-        } finally {
-            close(con, stmt, rs);
-        }
-        return usersId;
-    }
 
     // //////////////////////////////////////////////////////////
     // DB util methods
